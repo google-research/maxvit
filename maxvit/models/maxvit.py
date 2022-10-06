@@ -20,6 +20,7 @@ import re
 import string
 
 from absl import logging
+from maxvit.models import attention_utils as attn_utils
 from maxvit.models import common_ops as ops
 from maxvit.models import hparam_configs
 import tensorflow as tf
@@ -179,8 +180,61 @@ class Attention(tf.keras.layers.Layer):
 
     ##### Relative attention
     if self.rel_attn_type in ['2d_multi_head', '2d_single_head']:
-      # TODO: add relative bias
-      self.reindexed_bias = None
+      query_shape_list = query_shape.as_list()
+      if query_shape.rank == 4:
+        height, width = query_shape_list[1:3]
+      elif query_shape.rank == 3:
+        seq_len = query_shape_list[1]
+        height = int(seq_len ** 0.5)
+        width = height
+        if height * width != seq_len:
+          raise ValueError('Does not support 2D relative attentive for '
+                           'non-square inputs.')
+      else:
+        raise ValueError(
+            'Does not support relative attention for query shape: %s.'
+            % query_shape_list)
+
+      if self.scale_ratio is not None:
+        scale_ratio = eval(self.scale_ratio)
+        vocab_height = 2 * round(height / scale_ratio) - 1
+        vocab_width = 2 * round(width / scale_ratio) - 1
+      else:
+        vocab_height = 2 * height - 1
+        vocab_width = 2 * width - 1
+
+      if self.rel_attn_type == '2d_multi_head':
+        h_axis = 1
+        rel_bias_shape = [self.num_heads, vocab_height, vocab_width]
+      elif self.rel_attn_type == '2d_single_head':
+        h_axis = 0
+        rel_bias_shape = [vocab_height, vocab_width]
+      else:
+        raise NotImplementedError('rel_attn_type %s not implemented yet.' %
+                                  self.rel_attn_type)
+
+      self.relative_bias = self.add_weight(
+          'relative_bias',
+          rel_bias_shape,
+          initializer=self.kernel_initializer,
+          trainable=True)
+
+      if self.scale_ratio is not None:
+        src_shape = self.relative_bias.shape.as_list()
+        relative_bias = tf.expand_dims(self.relative_bias, axis=-1)
+        relative_bias = tf.cast(
+            tf.image.resize(relative_bias, [2 * height - 1, 2 * width - 1]),
+            self.compute_dtype)
+        relative_bias = tf.squeeze(relative_bias, axis=-1)
+        tgt_shape = relative_bias.shape.as_list()
+        logging.info('Bilinear resize relative position bias %s -> %s.',
+                     src_shape, tgt_shape)
+      else:
+        relative_bias = tf.cast(self.relative_bias, self.compute_dtype)
+
+      self.reindexed_bias = attn_utils.reindex_2d_einsum_lookup(
+          relative_bias, height, width, height - 1, width - 1,
+          h_axis=h_axis)
     else:
       self.reindexed_bias = None
 
@@ -763,7 +817,7 @@ class MaxViTBlock(tf.keras.layers.Layer):
     config = self._config
     _, h, w, c = features.shape
     window_size = config.window_size
-    print(features.shape, config.window_size)
+
     if h % window_size != 0 or w % window_size != 0:
       raise ValueError(f'Feature map sizes {(h, w)} '
                        f'not divisible by window size ({window_size}).')
