@@ -3,7 +3,7 @@
 [Paper![Paper](http://img.shields.io/badge/Paper-arXiv.2104.00298-B3181B?logo=arXiv)](https://arxiv.org/abs/2204.01697)
 [Tutorial![Tutorial In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/google-research/maxvit/blob/master/MaxViT_tutorial.ipynb)
 
-This repository hosts the TensorFlow implementation of MAXViT paper.
+This repository hosts the official TensorFlow implementation of MAXViT models.
 
 
 *Disclaimer: This is not an officially supported Google product.*
@@ -22,20 +22,19 @@ This repository hosts the TensorFlow implementation of MAXViT paper.
 
 [MaxViT](https://arxiv.org/abs/2204.01697) is a family of hybrid (CNN + ViT) image classification models, that achieves better performances across the board for both parameter and FLOPs efficiency than both SoTA ConvNets and Transformers. They can also scale well on large dataset sizes like ImageNet-21K. Notably, due to the linear-complexity of the grid attention used, MaxViT is able to ''see'' globally throughout the entire network, even in earlier, high-resolution stages.
 
-<details>
-  <summary><strong>MaxViT architecture</strong> (click to expand) </summary>
 <img src = "./doc/maxvit_arch.png" width="80%">
-</details>
 
-<details>
-  <summary><strong>ImageNet-1k results</strong> (click to expand) </summary>
-<img src = "./doc/imagenet_results.png" width="80%">
-</details>
-
-<details>
-  <summary><strong>ImageNet-21k/JFT results</strong> (click to expand) </summary>
-<img src = "./doc/i21k_jft_results.png" width="80%">
-</details>
+Results on ImageNet-1k - left: ImageNet-1k only setting; right: ImageNet-21k and JFT pre-trained settings.
+<table>
+  <tr>
+    <td> <img src = "./doc/imagenet_results.png" width="45%"> </td>
+    <td> <img src = "./doc/i21k_jft_results.png" width="45%"> </td>
+  </tr>
+  <tr>
+    <td><p align="center"><b>ImageNet-1k results</b></p></td>
+    <td><p align="center"><b>ImageNet-21k/JFT results</b></p></td>
+  </tr>
+</table>
 
 ## Pretrained MaxViT Checkpoints
 
@@ -44,10 +43,10 @@ We have provided a list of results and checkpoints as follows:
 |      ImageNet1K   |     Top1 Acc.  |    Params   |  FLOPs   | links  |
 |    ----------     |      ------    |    ------   | ------  | ------   |
 |    MaxViT-T-224     |    83.62%   |    31M    |  5.6B    | [ckpt](https://console.cloud.google.com/storage/browser/gresearch/maxvit/ckpts/maxvittiny/i1k/224)
-|    MaxViT-T-384     |    85.24%   |    31M    | 17.7G    | [ckpt](https://console.cloud.google.com/storage/browser/gresearch/maxvit/ckpts/maxvittiny/i1k/384)
+|    MaxViT-T-384     |    85.24%   |    31M    | 17.7B    | [ckpt](https://console.cloud.google.com/storage/browser/gresearch/maxvit/ckpts/maxvittiny/i1k/384)
 |    MaxViT-T-512     |    85.72%   |   31M    | 33.7B    | [ckpt](https://console.cloud.google.com/storage/browser/gresearch/maxvit/ckpts/maxvittiny/i1k/512)
 |    MaxViT-S-224     |    84.45%   |    69M    |  11.7B    | [ckpt](https://console.cloud.google.com/storage/browser/gresearch/maxvit/ckpts/maxvitsmall/i1k/224)
-|    MaxViT-S-384     |    85.74%   |    69M    | 36.1G    | [ckpt](https://console.cloud.google.com/storage/browser/gresearch/maxvit/ckpts/maxvitsmall/i1k/384)
+|    MaxViT-S-384     |    85.74%   |    69M    | 36.1B    | [ckpt](https://console.cloud.google.com/storage/browser/gresearch/maxvit/ckpts/maxvitsmall/i1k/384)
 |    MaxViT-S-512     |    86.19%   |   69M    | 67.6B    | [ckpt](https://console.cloud.google.com/storage/browser/gresearch/maxvit/ckpts/maxvitsmall/i1k/512)
 |    MaxViT-B     |
 |    MaxViT-L     |
