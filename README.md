@@ -27,8 +27,8 @@ This repository hosts the official TensorFlow implementation of MAXViT models.
 Results on ImageNet-1k - left: ImageNet-1k only setting; right: ImageNet-21k and JFT pre-trained settings.
 <table>
   <tr>
-    <td> <img src = "./doc/imagenet_results.png" width="45%"> </td>
-    <td> <img src = "./doc/i21k_jft_results.png" width="45%"> </td>
+    <td> <img src = "./doc/imagenet_results.png" width="500"> </td>
+    <td> <img src = "./doc/i21k_jft_results.png" width="500"> </td>
   </tr>
   <tr>
     <td><p align="center"><b>ImageNet-1k results</b></p></td>
