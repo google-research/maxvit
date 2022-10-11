@@ -22,19 +22,18 @@ This repository hosts the official TensorFlow implementation of MAXViT models.
 
 [MaxViT](https://arxiv.org/abs/2204.01697) is a family of hybrid (CNN + ViT) image classification models, that achieves better performances across the board for both parameter and FLOPs efficiency than both SoTA ConvNets and Transformers. They can also scale well on large dataset sizes like ImageNet-21K. Notably, due to the linear-complexity of the grid attention used, MaxViT is able to ''see'' globally throughout the entire network, even in earlier, high-resolution stages.
 
+MaxViT meta-architecture:
+
 <img src = "./doc/maxvit_arch.png" width="80%">
 
-Results on ImageNet-1k - left: ImageNet-1k only setting; right: ImageNet-21k and JFT pre-trained settings.
-<table>
-  <tr>
-    <td> <img src = "./doc/imagenet_results.png" width="500"> </td>
-    <td> <img src = "./doc/i21k_jft_results.png" width="500"> </td>
-  </tr>
-  <tr>
-    <td><p align="center"><b>ImageNet-1k results</b></p></td>
-    <td><p align="center"><b>ImageNet-21k/JFT results</b></p></td>
-  </tr>
-</table>
+Results on ImageNet-1k train and test:
+
+<img src = "./doc/imagenet_results.png" width="80%">
+
+Results on ImageNet-21k and JFT pre-trained models:
+
+<img src = "./doc/i21k_jft_results.png" width="80%">
+
 
 ## Pretrained MaxViT Checkpoints
 
