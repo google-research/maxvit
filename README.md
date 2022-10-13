@@ -1,13 +1,20 @@
 # MaxViT: Multi-Axis Vision Transformer (ECCV 2022)
 
-[Paper![Paper](http://img.shields.io/badge/Paper-arXiv.2104.00298-B3181B?logo=arXiv)](https://arxiv.org/abs/2204.01697)
-[Tutorial![Tutorial In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/google-research/maxvit/blob/master/MaxViT_tutorial.ipynb)
+[![Paper](http://img.shields.io/badge/Paper-arXiv.2104.00298-B3181B?logo=arXiv)](https://arxiv.org/abs/2204.01697)
+[![Tutorial In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/google-research/maxvit/blob/master/MaxViT_tutorial.ipynb)
+[![video](https://img.shields.io/badge/Video-Presentation-F9D371)](https://youtu.be/WEgB4lAZyKM)
 
-This repository hosts the official TensorFlow implementation of MAXViT models.
+
+This repository hosts the official TensorFlow implementation of MAXViT models:
+
+[MaxViT: Multi-Axis Vision Transformer](https://arxiv.org/abs/2204.01697). ECCV 2022.\
+[Zhengzhong Tu](https://twitter.com/_vztu), [Hossein Talebi](https://scholar.google.com/citations?hl=en&user=UOX9BigAAAAJ), [Han Zhang](https://sites.google.com/view/hanzhang), [Feng Yang](https://sites.google.com/view/feng-yang), [Peyman Milanfar](https://sites.google.com/view/milanfarhome/), [Alan Bovik](https://www.ece.utexas.edu/people/faculty/alan-bovik), and [Yinxiao Li](https://scholar.google.com/citations?user=kZsIU74AAAAJ&hl=en)\
+Google Research, University of Texas at Austin\
 
 
 *Disclaimer: This is not an officially supported Google product.*
 
+- Oct 12, 2022: Added the remaining ImageNet-1K and -21K checkpoints.
 - Oct 4, 2022: A list of updates
   * Added MaxViTTiny and MaxViTSmall checkpoints.
   * Added a Colab tutorial.
@@ -24,46 +31,62 @@ This repository hosts the official TensorFlow implementation of MAXViT models.
 
 MaxViT meta-architecture:
 
+<p align="center">
 <img src = "./doc/maxvit_arch.png" width="80%">
+</p>
 
 Results on ImageNet-1k train and test:
 
+<p align="center">
 <img src = "./doc/imagenet_results.png" width="80%">
+</p>
 
 Results on ImageNet-21k and JFT pre-trained models:
 
+<p align="center">
 <img src = "./doc/i21k_jft_results.png" width="80%">
+</p>
 
-
-## Pretrained MaxViT Checkpoints
-
-We have provided a list of results and checkpoints as follows:
-
-|      ImageNet1K   |     Top1 Acc.  |    Params   |  FLOPs   | links  |
-|    ----------     |      ------    |    ------   | ------  | ------   |
-|    MaxViT-T-224     |    83.62%   |    31M    |  5.6B    | [ckpt](https://console.cloud.google.com/storage/browser/gresearch/maxvit/ckpts/maxvittiny/i1k/224)
-|    MaxViT-T-384     |    85.24%   |    31M    | 17.7B    | [ckpt](https://console.cloud.google.com/storage/browser/gresearch/maxvit/ckpts/maxvittiny/i1k/384)
-|    MaxViT-T-512     |    85.72%   |   31M    | 33.7B    | [ckpt](https://console.cloud.google.com/storage/browser/gresearch/maxvit/ckpts/maxvittiny/i1k/512)
-|    MaxViT-S-224     |    84.45%   |    69M    |  11.7B    | [ckpt](https://console.cloud.google.com/storage/browser/gresearch/maxvit/ckpts/maxvitsmall/i1k/224)
-|    MaxViT-S-384     |    85.74%   |    69M    | 36.1B    | [ckpt](https://console.cloud.google.com/storage/browser/gresearch/maxvit/ckpts/maxvitsmall/i1k/384)
-|    MaxViT-S-512     |    86.19%   |   69M    | 67.6B    | [ckpt](https://console.cloud.google.com/storage/browser/gresearch/maxvit/ckpts/maxvitsmall/i1k/512)
-|    MaxViT-B     |
-|    MaxViT-L     |
-
-Here are a list of ImageNet-21K pretrained and finetuned models:
-
-|      ImageNet1K   |     Top1 Acc.  |    Params   |  FLOPs   | links  |
-|    ----------     |      ------    |    ------   | ------  | ------   |
-|    MaxViT-B     |
-|    MaxViT-L     |
 
 ## Colab Demo
 
 We have released a Google Colab Demo on the tutorials of how to run MaxViT on images. Try it here [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/google-research/maxvit/blob/master/MaxViT_tutorial.ipynb)
 
+## Pretrained MaxViT Checkpoints
+
+We have provided a list of results and checkpoints as follows:
+
+|     Name      | resolution |    Top1 Acc.  |    #Params   |  FLOPs   | model  |
+|    ----------     |  ---------|    ------    |    ------   | ------  | ------   |
+|    MaxViT-T      |  224x224  |   83.62%   |    31M    |  5.6B    | [ckpt](https://console.cloud.google.com/storage/browser/gresearch/maxvit/ckpts/maxvittiny/i1k/224)
+|    MaxViT-T     |  384x384   |   85.24%   |    31M    | 17.7B    | [ckpt](https://console.cloud.google.com/storage/browser/gresearch/maxvit/ckpts/maxvittiny/i1k/384)
+|    MaxViT-T     |  512x512   |   85.72%   |   31M    | 33.7B    | [ckpt](https://console.cloud.google.com/storage/browser/gresearch/maxvit/ckpts/maxvittiny/i1k/512)
+|    MaxViT-S     |  224x224   |  84.45%   |    69M    |  11.7B    | [ckpt](https://console.cloud.google.com/storage/browser/gresearch/maxvit/ckpts/maxvitsmall/i1k/224)
+|    MaxViT-S     |  384x384   |   85.74%   |    69M    | 36.1B    | [ckpt](https://console.cloud.google.com/storage/browser/gresearch/maxvit/ckpts/maxvitsmall/i1k/384)
+|    MaxViT-S     |  512x512   |    86.19%   |   69M    | 67.6B    | [ckpt](https://console.cloud.google.com/storage/browser/gresearch/maxvit/ckpts/maxvitsmall/i1k/512)
+|    MaxViT-B     |  224x224   |    84.95%   |   119M    | 24.2B    | [ckpt](https://console.cloud.google.com/storage/browser/gresearch/maxvit/ckpts/maxvitbase/i1k/224)
+|    MaxViT-B     |  384x384   |    86.34%   |   119M    | 74.2B    | [ckpt](https://console.cloud.google.com/storage/browser/gresearch/maxvit/ckpts/maxvitbase/i1k/384)
+|    MaxViT-B     |  512x512   |    86.66%   |   119M    | 138.5B    | [ckpt](https://console.cloud.google.com/storage/browser/gresearch/maxvit/ckpts/maxvitbase/i1k/512)
+|    MaxViT-L     |  224x224   |    85.17%   |   212M    | 43.9B    | [ckpt](https://console.cloud.google.com/storage/browser/gresearch/maxvit/ckpts/maxvitlarge/i1k/224)
+|    MaxViT-L     |  384x384   |    86.40%   |   212M    | 133.1B    | [ckpt](https://console.cloud.google.com/storage/browser/gresearch/maxvit/ckpts/maxvitlarge/i1k/384)
+|    MaxViT-L     |  512x512   |    86.70%   |   212M    | 245.4B    | [ckpt](https://console.cloud.google.com/storage/browser/gresearch/maxvit/ckpts/maxvitlarge/i1k/512)
+
+Here are a list of ImageNet-21K pretrained and ImageNet-1K finetuned models:
+
+|     Name  |  resolution |   Top1 Acc.  |    #Params   |  FLOPs   | 21k model  | 1k model |
+|    ----------     |      ------    |    ------   | ------  | ------   | ------ | --------|
+|    MaxViT-B     | 224x224 |  - |  119M |  24.2B |  [ckpt](https://console.cloud.google.com/storage/browser/gresearch/maxvit/ckpts/maxvitbase/i21k_pt/224) | - |
+|    MaxViT-B     | 384x384 |  - |  119M |  74.2B |   -  | [ckpt](https://console.cloud.google.com/storage/browser/gresearch/maxvit/ckpts/maxvitbase/i21k_i1k/384)
+|    MaxViT-B     | 512x512 |  - |  119M |  138.5B |  -  | [ckpt](https://console.cloud.google.com/storage/browser/gresearch/maxvit/ckpts/maxvitbase/i21k_i1k/512) 
+|    MaxViT-L     | 224x224 |  - |  212M |  43.9B  |  [ckpt](https://console.cloud.google.com/storage/browser/gresearch/maxvit/ckpts/maxvitlarge/i21k_pt/224) | - |
+|    MaxViT-L     | 384x384 |  - |  212M |  133.1B  | -  |  [ckpt](https://console.cloud.google.com/storage/browser/gresearch/maxvit/ckpts/maxvitlarge/i21k_i1k/384) 
+|    MaxViT-L     | 512x512 |  - |  212M |  245.4B  | -  |  [ckpt](https://console.cloud.google.com/storage/browser/gresearch/maxvit/ckpts/maxvitlarge/i21k_i1k/512) 
+|    MaxViT-XL    | 224x224 |  - |  475M |  97.8B |  [ckpt](https://console.cloud.google.com/storage/browser/gresearch/maxvit/ckpts/maxvitxlarge/i21k_pt/224) | - |
+|    MaxViT-XL     | 384x384 |  - |  475M |  293.7B  | -  |  [ckpt](https://console.cloud.google.com/storage/browser/gresearch/maxvit/ckpts/maxvitxlarge/i21k_i1k/384)
+|    MaxViT-XL     | 512x512 |  - |  475M |  535.2B  | -  |  [ckpt](https://console.cloud.google.com/storage/browser/gresearch/maxvit/ckpts/maxvitxlarge/i21k_i1k/512)
 
 ## Citation
-Should you find this repository useful, please consider citing:
+Should you find this repository useful, please consider citing:\
 ```
 @article{tu2022maxvit,
   title={MaxViT: Multi-Axis Vision Transformer},

@@ -96,6 +96,7 @@ class EvalCkptDriver(object):
     num_classes: int. Number of classes, default to 1000 for ImageNet.
     include_background_label: whether to include extra background label.
     advprop_preprocessing: whether to use advprop preprocessing.
+    legacy_preprocessing: whether to use legacy preprocessing.
   """
 
   def __init__(self,
@@ -105,7 +106,8 @@ class EvalCkptDriver(object):
                image_size=224,
                num_classes=1000,
                include_background_label=False,
-               advprop_preprocessing=False):
+               advprop_preprocessing=False,
+               legacy_preprocessing=True):
     """Initialize internal variables."""
     self.model_name = model_name
     self.model_input_size = model_input_size
@@ -114,6 +116,7 @@ class EvalCkptDriver(object):
     self.include_background_label = include_background_label
     self.image_size = image_size
     self.advprop_preprocessing = advprop_preprocessing
+    self.legacy_preprocessing = legacy_preprocessing
 
   def restore_model(self, sess, ckpt_dir, enable_ema=True, export_ckpt=None):
     """Restore variables from checkpoint dir."""
@@ -276,10 +279,13 @@ class MaxViTDriver(EvalCkptDriver):
   def build_model(self, features, is_training):
     """Build model with input features."""
 
-    features -= tf.constant(
-        _MEAN_RGB, shape=[1, 1, 3], dtype=features.dtype)
-    features /= tf.constant(
-        _STDDEV_RGB, shape=[1, 1, 3], dtype=features.dtype)
+    if self.legacy_preprocessing:
+      features -= tf.constant(
+          _MEAN_RGB, shape=[1, 1, 3], dtype=features.dtype)
+      features /= tf.constant(
+          _STDDEV_RGB, shape=[1, 1, 3], dtype=features.dtype)
+    else:
+      features = (features - 127.5) / 127.5  # normalize to [-1, 1]
 
     logits = build_model(
         features, self.model_name, is_training, self.model_input_size)
