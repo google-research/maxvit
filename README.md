@@ -1,15 +1,15 @@
 # MaxViT: Multi-Axis Vision Transformer (ECCV 2022)
 
-[![Paper](http://img.shields.io/badge/Paper-arXiv.2104.00298-B3181B?logo=arXiv)](https://arxiv.org/abs/2204.01697)
+[![Paper](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)](https://arxiv.org/abs/2204.01697)
 [![Tutorial In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/google-research/maxvit/blob/master/MaxViT_tutorial.ipynb)
 [![video](https://img.shields.io/badge/Video-Presentation-F9D371)](https://youtu.be/WEgB4lAZyKM)
 
 
 This repository hosts the official TensorFlow implementation of MAXViT models:
 
-[MaxViT: Multi-Axis Vision Transformer](https://arxiv.org/abs/2204.01697). ECCV 2022.\
+__[MaxViT: Multi-Axis Vision Transformer](https://arxiv.org/abs/2204.01697)__. ECCV 2022.\
 [Zhengzhong Tu](https://twitter.com/_vztu), [Hossein Talebi](https://scholar.google.com/citations?hl=en&user=UOX9BigAAAAJ), [Han Zhang](https://sites.google.com/view/hanzhang), [Feng Yang](https://sites.google.com/view/feng-yang), [Peyman Milanfar](https://sites.google.com/view/milanfarhome/), [Alan Bovik](https://www.ece.utexas.edu/people/faculty/alan-bovik), and [Yinxiao Li](https://scholar.google.com/citations?user=kZsIU74AAAAJ&hl=en)\
-Google Research, University of Texas at Austin\
+Google Research, University of Texas at Austin
 
 
 *Disclaimer: This is not an officially supported Google product.*
@@ -56,7 +56,7 @@ We have released a Google Colab Demo on the tutorials of how to run MaxViT on im
 
 We have provided a list of results and checkpoints as follows:
 
-|     Name      | resolution |    Top1 Acc.  |    #Params   |  FLOPs   | model  |
+|     Name      | Resolution |    Top1 Acc.  |    #Params   |  FLOPs   | Model  |
 |    ----------     |  ---------|    ------    |    ------   | ------  | ------   |
 |    MaxViT-T      |  224x224  |   83.62%   |    31M    |  5.6B    | [ckpt](https://console.cloud.google.com/storage/browser/gresearch/maxvit/ckpts/maxvittiny/i1k/224)
 |    MaxViT-T     |  384x384   |   85.24%   |    31M    | 17.7B    | [ckpt](https://console.cloud.google.com/storage/browser/gresearch/maxvit/ckpts/maxvittiny/i1k/384)
@@ -73,7 +73,7 @@ We have provided a list of results and checkpoints as follows:
 
 Here are a list of ImageNet-21K pretrained and ImageNet-1K finetuned models:
 
-|     Name  |  resolution |   Top1 Acc.  |    #Params   |  FLOPs   | 21k model  | 1k model |
+|     Name  |  Resolution |   Top1 Acc.  |    #Params   |  FLOPs   | 21k model  | 1k model |
 |    ----------     |      ------    |    ------   | ------  | ------   | ------ | --------|
 |    MaxViT-B     | 224x224 |  - |  119M |  24.2B |  [ckpt](https://console.cloud.google.com/storage/browser/gresearch/maxvit/ckpts/maxvitbase/i21k_pt/224) | - |
 |    MaxViT-B     | 384x384 |  - |  119M |  74.2B |   -  | [ckpt](https://console.cloud.google.com/storage/browser/gresearch/maxvit/ckpts/maxvitbase/i21k_i1k/384)
@@ -86,7 +86,7 @@ Here are a list of ImageNet-21K pretrained and ImageNet-1K finetuned models:
 |    MaxViT-XL     | 512x512 |  - |  475M |  535.2B  | -  |  [ckpt](https://console.cloud.google.com/storage/browser/gresearch/maxvit/ckpts/maxvitxlarge/i21k_i1k/512)
 
 ## Citation
-Should you find this repository useful, please consider citing:\
+Should you find this repository useful, please consider citing:
 ```
 @article{tu2022maxvit,
   title={MaxViT: Multi-Axis Vision Transformer},
