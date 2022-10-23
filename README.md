@@ -14,6 +14,8 @@ Google Research, University of Texas at Austin
 
 *Disclaimer: This is not an officially supported Google product.*
 
+**News**:
+
 - Oct 12, 2022: Added the remaining ImageNet-1K and -21K checkpoints.
 - Oct 4, 2022: A list of updates
   * Added MaxViTTiny and MaxViTSmall checkpoints.
