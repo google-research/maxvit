@@ -16,6 +16,7 @@ Google Research, University of Texas at Austin
 
 **News**:
 
+- May, 2023: MaxViT is officially released in [Tensorflow model garden](https://github.com/tensorflow/models/tree/master/official/projects/maxvit) to support training!
 - Oct 12, 2022: Added the remaining ImageNet-1K and -21K checkpoints.
 - Oct 4, 2022: A list of updates
   * Added MaxViTTiny and MaxViTSmall checkpoints.
